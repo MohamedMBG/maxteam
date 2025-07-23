@@ -4,14 +4,18 @@
         "thumb": "28.jpg",
         "tag": "Marketing",
         "date": "August, 2024",
-        "text": "Photo shooting & creative product editing"
+        "text": "Photo shooting & creative product editing",
+        "description": "A modern promotional campaign with high quality photography and editing techniques.",
+        "images": ["28.jpg", "29.jpg", "30.jpg"]
     },
     {
         "id": 2,
         "thumb": "29.jpg",
         "tag": "Creative",
         "date": "March, 2023",
-        "text": "Quality in digital industrial"
+        "text": "Quality in digital industrial",
+        "description": "Creative and clean industrial web design with focus on usability.",
+        "images": ["31.jpg", "32.jpg", "33.jpg"]
     },
     {
         "id": 3,

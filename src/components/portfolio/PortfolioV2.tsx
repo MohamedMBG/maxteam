@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PortfolioV2Data from "../../../src/assets/jsonData/portfolio/PortfolioV2Data.json";
 import SinglePortfolioV2 from "./SinglePortfolioV2";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 function groupByCategory(portfolio: any[]): Record<string, any[]> {
     const groups: Record<string, any[]> = {};
@@ -16,6 +17,7 @@ function groupByCategory(portfolio: any[]): Record<string, any[]> {
 const PortfolioV2 = () => {
     const [portfolio, setPortfolio] = useState<any[]>(PortfolioV2Data);
     const [activeCategory, setActiveCategory] = useState<string>('All');
+    const [selectedWork, setSelectedWork] = useState<any | null>(null);
 
     useEffect(() => {
         const stored = localStorage.getItem('portfolioV2');
@@ -50,7 +52,7 @@ const PortfolioV2 = () => {
                     )}
                     {displayedWorks.map((work: any) => (
                         <div className="col-12 col-md-6 col-lg-4" key={work.id}>
-                            <div className="portfolio-card position-relative rounded-4 shadow-lg overflow-hidden bg-black h-100" style={{transition:'transform .2s', minHeight:340}}>
+                            <div className="portfolio-card position-relative rounded-4 shadow-lg overflow-hidden bg-black h-100" style={{transition:'transform .2s', minHeight:340}} onClick={() => setSelectedWork(work)}>
                                 <div className="overflow-hidden" style={{height:260}}>
                                     <img src={(work.images && work.images[0]) || work.image || `/assets/img/portfolio/${work.thumb}`} alt={work.title || work.text} className="w-100 h-100 object-fit-cover" style={{filter:'brightness(0.85)', transition:'filter .2s'}} />
                                 </div>
@@ -66,6 +68,24 @@ const PortfolioV2 = () => {
             <footer className="text-center mt-auto py-4 small text-muted bg-dark border-top border-secondary">
                 2024 © ALL RIGHTS RESERVED
             </footer>
+            {selectedWork && (
+                <div className="position-fixed top-0 start-0 end-0 bottom-0 bg-black bg-opacity-75 d-flex align-items-center justify-content-center" style={{ zIndex: 2000 }}>
+                    <div className="bg-dark p-4 rounded-4 position-relative" style={{ maxWidth: '90vw', maxHeight: '90vh', overflowY: 'auto' }}>
+                        <button className="btn btn-sm btn-light position-absolute top-0 end-0" onClick={() => setSelectedWork(null)}>×</button>
+                        <h4 className="text-light mb-3">{selectedWork.title || selectedWork.text}</h4>
+                        <PhotoProvider>
+                            <div className="d-flex flex-wrap gap-3 justify-content-center">
+                                {selectedWork.images && selectedWork.images.map((img: string, i: number) => (
+                                    <PhotoView key={i} src={img.startsWith('http') ? img : `/assets/img/portfolio/${img}`}> 
+                                        <img src={img.startsWith('http') ? img : `/assets/img/portfolio/${img}`} alt="Gallery" style={{ maxHeight: '60vh', borderRadius: 8 }} />
+                                    </PhotoView>
+                                ))}
+                            </div>
+                        </PhotoProvider>
+                        {selectedWork.description && <p className="text-light mt-3">{selectedWork.description}</p>}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
