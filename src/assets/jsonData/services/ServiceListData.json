@@ -1,17 +1,32 @@
 [
     {
         "id": 1,
-        "serviceName": "Social Media",
+        "serviceName": "Visual content creation",
         "count": "01"
     },
     {
         "id": 2,
-        "serviceName": "Content Writing",
+        "serviceName": "Film & documentary production",
         "count": "02"
     },
     {
         "id": 3,
-        "serviceName": "Video Production",
+        "serviceName": "Commercial spots & advertising",
         "count": "03"
+    },
+    {
+        "id": 4,
+        "serviceName": "Motion design & animation",
+        "count": "04"
+    },
+    {
+        "id": 5,
+        "serviceName": "Event coverage & editing",
+        "count": "05"
+    },
+    {
+        "id": 6,
+        "serviceName": "Color grading & post-production",
+        "count": "06"
     }
 ]

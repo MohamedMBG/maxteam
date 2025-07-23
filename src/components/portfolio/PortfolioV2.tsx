@@ -52,7 +52,7 @@ const PortfolioV2 = () => {
                         <div className="col-12 col-md-6 col-lg-4" key={work.id}>
                             <div className="portfolio-card position-relative rounded-4 shadow-lg overflow-hidden bg-black h-100" style={{transition:'transform .2s', minHeight:340}}>
                                 <div className="overflow-hidden" style={{height:260}}>
-                                    <img src={work.image || `/assets/img/portfolio/${work.thumb}`} alt={work.title || work.text} className="w-100 h-100 object-fit-cover" style={{filter:'brightness(0.85)', transition:'filter .2s'}} />
+                                    <img src={(work.images && work.images[0]) || work.image || `/assets/img/portfolio/${work.thumb}`} alt={work.title || work.text} className="w-100 h-100 object-fit-cover" style={{filter:'brightness(0.85)', transition:'filter .2s'}} />
                                 </div>
                                 <div className="portfolio-overlay position-absolute start-0 end-0 bottom-0 p-4 d-flex flex-column justify-content-end" style={{background:'linear-gradient(0deg, #181b1f 90%, transparent 100%)', minHeight:100, transition:'opacity .2s', opacity:0.97}}>
                                     <h5 className="fw-bold text-white mb-1" style={{fontSize:22}}>{work.title || work.text}</h5>

@@ -13,6 +13,7 @@
     "@react-spring/web": "^9.7.5",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.3",
+    "framer-motion": "^12.23.7",
     "gsap": "^3.12.7",
     "jquery": "^3.7.1",
     "react": "^19.0.0",
