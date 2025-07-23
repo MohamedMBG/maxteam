@@ -1,46 +1,31 @@
 import { Helmet } from "react-helmet-async";
+import AboutV6 from "../../components/about/AboutV6";
+import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
+import DarkClass from "../../components/classes/DarkClass";
+import FunFactV1 from "../../components/fact/FunFactV1";
+import LayoutV1 from "../../components/layouts/LayoutV1";
+import PartnerV2 from "../../components/partner/PartnerV2";
+import TeamV1 from "../../components/team/TeamV1";
+import TestimonialV3 from "../../components/testimonial/TestimonialV3";
 
-const AboutUsPage = () => (
-  <>
-    <Helmet>
-      <title>About Us - MaxTeam Visual</title>
-    </Helmet>
-    <div className="container default-padding">
-      <h1>About MaxTeam Visual</h1>
-      <p><strong>MaxTeam Visual</strong> (stylized as <strong>MAXTEAM VISUALS</strong>) is a Moroccan audiovisual production company based in the Oriental region, particularly in Nador and Oujda. Founded by Mohamed Kodiji, the company specializes in professional photo and video production, offering services that span from concept development to final delivery.</p>
-      <h2>Services</h2>
-      <ul>
-        <li>Visual content creation (photo and video)</li>
-        <li>Film and documentary production</li>
-        <li>Commercial spots and advertising</li>
-        <li>Motion design and animation</li>
-        <li>Event coverage and editing</li>
-        <li>Color grading and post-production</li>
-      </ul>
-      <h2>Projects</h2>
-      <ul>
-        <li>Corporate videos</li>
-        <li>Music videos</li>
-        <li>Fashion and cultural photography</li>
-        <li>Event shoots</li>
-        <li>Short films</li>
-      </ul>
-      <h2>Online Presence</h2>
-      <ul>
-        <li>Instagram: <a href="https://instagram.com/maxteamvisual" target="_blank" rel="noopener noreferrer">@maxteamvisual</a> – showcases their work and behind-the-scenes content.</li>
-        <li>YouTube: <a href="https://youtube.com/@maxteamvisual" target="_blank" rel="noopener noreferrer">@maxteamvisual</a> – features music videos, event coverage (e.g. WCGC Morocco Final), and cinematic productions.</li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/company/maxteam-production" target="_blank" rel="noopener noreferrer">MaxTeam Production</a></li>
-      </ul>
-      <h2>Location</h2>
-      <p>Based in the Oriental region of Morocco (Nador & Oujda). Available for projects throughout the country.</p>
-      <h2>Contact Information</h2>
-      <ul>
-        <li>Phone: <a href="tel:+212638553480">+212 638‑553480</a></li>
-        <li>Email: <a href="mailto:kodiji.mohammed@gmail.com">kodiji.mohammed@gmail.com</a></li>
-        <li>Website: <a href="https://www.maxteamvisual.com" target="_blank" rel="noopener noreferrer">www.maxteamvisual.com</a></li>
-      </ul>
-    </div>
-  </>
-);
+const AboutUsPage = () => {
+    return (
+        <>
+            <Helmet>
+                <title>Dixor - About Us</title>
+            </Helmet>
+
+            <LayoutV1>
+                <Breadcrumb title='About Company' breadCrumb='About' />
+                <AboutV6 sectionClass='bg-gray' />
+                <FunFactV1 sectionClass='default-padding-bottom bg-gray' />
+                <PartnerV2 />
+                <TeamV1 sectionClass='bg-gray' hasTitle={true} />
+                <TestimonialV3 />
+                <DarkClass />
+            </LayoutV1>
+        </>
+    );
+};
 
 export default AboutUsPage;

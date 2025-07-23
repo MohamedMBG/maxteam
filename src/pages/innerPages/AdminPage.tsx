@@ -1,152 +1,159 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import LayoutV1 from '../../components/layouts/LayoutV1';
 import DarkClass from '../../components/classes/DarkClass';
 
+const initialForm = { title: '', description: '', category: '', date: '', client: '', imageLink: '', imageFile: null as File | null, imageUrl: '' };
+
 const AdminPage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [form, setForm] = useState({
-    title: '',
-    description: '',
-    imageUrl: '',
-    imageFile: null as File | null,
-    imagePreview: '',
-    category: '',
-    client: '',
-    date: '',
-    link: '',
-  });
+  const [form, setForm] = useState<typeof initialForm>(initialForm);
   const [message, setMessage] = useState('');
+  const [imagePreview, setImagePreview] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (username === 'admin' && password === 'admin') {
-      setIsLoggedIn(true);
+      setLoggedIn(true);
       setMessage('');
     } else {
-      setMessage('Invalid credentials.');
+      setMessage('Invalid credentials');
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleImageFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files && e.target.files[0];
-    if (file) {
-      setForm((prev) => ({
-        ...prev,
-        imageFile: file,
-        imagePreview: URL.createObjectURL(file),
-        imageUrl: '', // Clear URL if uploading
-      }));
+    setForm({ ...form, [name]: value });
+    if (name === 'imageLink') {
+      setImagePreview(value);
     }
   };
 
-  const handleImageUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm((prev) => ({
-      ...prev,
-      imageUrl: e.target.value,
-      imageFile: null,
-      imagePreview: e.target.value,
-    }));
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setForm(f => ({ ...f, imageFile: file, imageUrl: reader.result as string, imageLink: '' }));
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would normally send the new project to a backend or update state
-    alert('Project added!\n' + JSON.stringify({ ...form, imageFile: form.imageFile ? form.imageFile.name : undefined }, null, 2));
-    setForm({ title: '', description: '', imageUrl: '', imageFile: null, imagePreview: '', category: '', client: '', date: '', link: '' });
+    // At least one image required
+    if (!form.imageLink && !form.imageUrl) {
+      setMessage('Please provide an image link or upload an image.');
+      return;
+    }
+    // Simulate adding to portfolio (localStorage)
+    const existing = JSON.parse(localStorage.getItem('portfolioV2') || '[]');
+    const newWork = {
+      id: Date.now(),
+      title: form.title,
+      description: form.description,
+      category: form.category,
+      date: form.date,
+      client: form.client,
+      image: form.imageLink ? form.imageLink : form.imageUrl
+    };
+    localStorage.setItem('portfolioV2', JSON.stringify([...existing, newWork]));
+    setForm(initialForm);
+    setImagePreview('');
+    setMessage('New work added!');
   };
 
-  if (!isLoggedIn) {
+  if (!loggedIn) {
     return (
-      <>
+      <LayoutV1>
         <DarkClass />
-        <div className="container default-padding" style={{ maxWidth: 400 }}>
-          <div className="contact-form-style-one">
-            <h2 className="title">Admin Login</h2>
-            <form className="contact-form" onSubmit={handleLogin}>
-              <div className="form-group">
-                <input type="text" className="form-control" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
+        <div className="admin-area default-padding position-relative" style={{ minHeight: '100vh' }}>
+          <div className="shape-left" style={{ position: 'absolute', left: 0, top: 0, width: 200, height: 400, background: `url(/assets/img/shape/1.jpg) no-repeat`, backgroundSize: 'cover', opacity: 0.3, zIndex: 0 }} />
+          <div className="container position-relative" style={{ zIndex: 1 }}>
+            <div className="row">
+              <div className="col-lg-6 offset-lg-3">
+                <div className="site-heading text-center mb-4">
+                  <h2 className="title text-light">Admin Login</h2>
+                </div>
+                <form onSubmit={handleLogin} className="contact-form bg-dark p-4 rounded shadow">
+                  <div className="form-group mb-3">
+                    <label className="text-light">Username</label>
+                    <input name="username" value={username} onChange={e => setUsername(e.target.value)} className="form-control bg-dark text-light border-secondary" />
+                  </div>
+                  <div className="form-group mb-3">
+                    <label className="text-light">Password</label>
+                    <input name="password" type="password" value={password} onChange={e => setPassword(e.target.value)} className="form-control bg-dark text-light border-secondary" />
+                  </div>
+                  <button type="submit" className="btn btn-md btn-light w-100">Login</button>
+                  {message && <div className="alert alert-danger mt-3">{message}</div>}
+                </form>
               </div>
-              <div className="form-group">
-                <input type="password" className="form-control" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-              </div>
-              {message && <div style={{ color: 'red', marginBottom: 10 }}>{message}</div>}
-              <button type="submit" className="btn btn-theme effect">Login</button>
-            </form>
+            </div>
           </div>
         </div>
-      </>
+      </LayoutV1>
     );
   }
 
   return (
-    <>
+    <LayoutV1>
       <DarkClass />
-      <div className="container default-padding" style={{ maxWidth: 700 }}>
-        <div className="contact-form-style-one">
-          <h2 className="title">Add New Project</h2>
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="row">
-              <div className="col-lg-6">
-                <div className="form-group">
-                  <input type="text" className="form-control" name="title" placeholder="Title" value={form.title} onChange={handleChange} required />
-                </div>
+      <div className="admin-area default-padding position-relative" style={{ minHeight: '100vh' }}>
+        <div className="shape-left" style={{ position: 'absolute', left: 0, top: 0, width: 200, height: 400, background: `url(/assets/img/shape/1.jpg) no-repeat`, backgroundSize: 'cover', opacity: 0.3, zIndex: 0 }} />
+        <div className="container position-relative" style={{ zIndex: 1 }}>
+          <div className="row">
+            <div className="col-lg-8 offset-lg-2">
+              <div className="site-heading text-center mb-4">
+                <h2 className="title text-light">Add New Portfolio Work</h2>
               </div>
-              <div className="col-lg-6">
-                <div className="form-group">
-                  <input type="text" className="form-control" name="category" placeholder="Category" value={form.category} onChange={handleChange} required />
+              <form onSubmit={handleSubmit} className="contact-form bg-dark p-4 rounded shadow">
+                <div className="form-group mb-3">
+                  <label className="text-light">Title</label>
+                  <input name="title" value={form.title} onChange={handleChange} className="form-control bg-dark text-light border-secondary" required placeholder="e.g. Creative Website" />
                 </div>
-              </div>
-              <div className="col-lg-12">
-                <div className="form-group">
-                  <textarea className="form-control" name="description" placeholder="Description" value={form.description} onChange={handleChange} required />
+                <div className="form-group mb-3">
+                  <label className="text-light">Description</label>
+                  <textarea name="description" value={form.description} onChange={handleChange} className="form-control bg-dark text-light border-secondary" required placeholder="e.g. A modern web project..." />
                 </div>
-              </div>
-              <div className="col-lg-6">
-                <div className="form-group">
-                  <input type="text" className="form-control" name="client" placeholder="Client" value={form.client} onChange={handleChange} />
+                <div className="form-group mb-3">
+                  <label className="text-light">Category</label>
+                  <input name="category" value={form.category} onChange={handleChange} className="form-control bg-dark text-light border-secondary" required placeholder="e.g. Marketing" />
                 </div>
-              </div>
-              <div className="col-lg-6">
-                <div className="form-group">
-                  <input type="date" className="form-control" name="date" placeholder="Date" value={form.date} onChange={handleChange} />
+                <div className="form-group mb-3">
+                  <label className="text-light">Date</label>
+                  <input name="date" value={form.date} onChange={handleChange} className="form-control bg-dark text-light border-secondary" required placeholder="e.g. April, 2024" />
                 </div>
-              </div>
-              <div className="col-lg-12">
-                <div className="form-group">
-                  <input type="text" className="form-control" name="link" placeholder="Project Link" value={form.link} onChange={handleChange} />
+                <div className="form-group mb-3">
+                  <label className="text-light">Client</label>
+                  <input name="client" value={form.client} onChange={handleChange} className="form-control bg-dark text-light border-secondary" required placeholder="e.g. Acme Corp" />
                 </div>
-              </div>
-              <div className="col-lg-12">
-                <div className="form-group">
-                  <label style={{ fontWeight: 500 }}>Project Image</label>
-                  <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-                    <input type="text" className="form-control" name="imageUrl" placeholder="Image URL" value={form.imageUrl} onChange={handleImageUrl} style={{ maxWidth: 300 }} />
-                    <span style={{ alignSelf: 'center' }}>or</span>
-                    <input type="file" accept="image/*" className="form-control" onChange={handleImageFile} style={{ maxWidth: 300 }} />
+                <div className="form-group mb-3">
+                  <label className="text-light">Image (Online Link)</label>
+                  <input name="imageLink" value={form.imageLink} onChange={handleChange} className="form-control bg-dark text-light border-secondary" placeholder="e.g. https://... or leave blank to upload" />
+                </div>
+                <div className="form-group mb-3">
+                  <label className="text-light">Or Upload Image</label>
+                  <input name="imageFile" type="file" accept="image/*" onChange={handleFileChange} className="form-control bg-dark text-light border-secondary" />
+                </div>
+                {imagePreview && (
+                  <div className="mb-3 text-center">
+                    <img src={imagePreview} alt="Preview" style={{ maxWidth: 200, maxHeight: 200, borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }} />
                   </div>
-                  {form.imagePreview && (
-                    <div style={{ marginTop: 16 }}>
-                      <img src={form.imagePreview} alt="Preview" style={{ maxWidth: 200, borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }} />
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="col-lg-12">
-                <div className="form-group full-width submit">
-                  <button className="btn btn-theme effect" type="submit">Add Project</button>
-                </div>
-              </div>
+                )}
+                <button type="submit" className="btn btn-md btn-light w-100">Add Work</button>
+                {message && <div className="alert alert-success mt-3">{message}</div>}
+              </form>
+              <button className="btn btn-md btn-outline-light w-100 mt-3" onClick={() => { setLoggedIn(false); setUsername(''); setPassword(''); }}>Logout</button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
-    </>
+    </LayoutV1>
   );
 };
 

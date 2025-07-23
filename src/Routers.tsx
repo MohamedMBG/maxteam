@@ -13,7 +13,6 @@ import Project3Page from "./pages/innerPages/Project3Page";
 import ProjectDetailsPage from "./pages/innerPages/ProjectDetailsPage";
 import ContactUsPage from "./pages/innerPages/ContactUsPage";
 import FaqPage from "./pages/innerPages/FaqPage";
-import AdminPage from './pages/innerPages/AdminPage';
 
 // Inner Light
 import AboutUsLightPage from "./pages/innerPages/AboutUsLightPage";
@@ -59,6 +58,7 @@ import BlogSingleLightPage from "./pages/blogPages/BlogSingleLightPage";
 import BlogSingleWithSidebarLightPage from "./pages/blogPages/BlogSingleWithSidebarLightPage";
 
 import NotFoundPage from "./pages/innerPages/NotFoundPage";
+import AdminPage from "./pages/innerPages/AdminPage";
 
 const Routers = () => {
     return (
@@ -78,7 +78,7 @@ const Routers = () => {
                 <Route path='/project-details/:id' element={<ProjectDetailsPage />}></Route>
                 <Route path='/contact-us' element={<ContactUsPage />}></Route>
                 <Route path='/faq' element={<FaqPage />}></Route>
-                <Route path='/admin' element={<AdminPage />} />
+                <Route path='/admin' element={<AdminPage />}></Route>
 
                 {/* Inner Light  */}
                 <Route path='/about-us-light' element={<AboutUsLightPage />}></Route>

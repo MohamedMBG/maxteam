@@ -1,21 +1,23 @@
 import { Helmet } from "react-helmet-async";
+import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
+import DarkClass from "../../components/classes/DarkClass";
+import LayoutV1 from "../../components/layouts/LayoutV1";
+import TeamV1 from "../../components/team/TeamV1";
 
-const TeamPage = () => (
-  <>
-    <Helmet>
-      <title>Our Team - MaxTeam Visual</title>
-    </Helmet>
-    <div className="container default-padding">
-      <h1>Our Team</h1>
-      <p><strong>MaxTeam Visual</strong> was founded by <strong>Mohamed Kodiji</strong>, a passionate audiovisual producer. The team is composed of creative professionals specializing in photography, videography, motion design, and post-production. Together, they bring a wealth of experience to every project, from corporate videos to music and fashion shoots.</p>
-      <p>Our team is dedicated to delivering high-quality visual content, working closely with clients from concept to final delivery. We pride ourselves on our creativity, technical expertise, and commitment to client satisfaction.</p>
-      <h2>Contact Us</h2>
-      <ul>
-        <li>Phone: <a href="tel:+212638553480">+212 638‑553480</a></li>
-        <li>Email: <a href="mailto:kodiji.mohammed@gmail.com">kodiji.mohammed@gmail.com</a></li>
-      </ul>
-    </div>
-  </>
-);
+const TeamPage = () => {
+    return (
+        <>
+            <Helmet>
+                <title>Dixor - Team</title>
+            </Helmet>
+
+            <LayoutV1>
+                <Breadcrumb title='Team Experts' breadCrumb='team' />
+                <TeamV1 sectionClass='bg-gray' />
+                <DarkClass />
+            </LayoutV1>
+        </>
+    );
+};
 
 export default TeamPage;

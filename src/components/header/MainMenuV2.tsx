@@ -32,10 +32,8 @@ const MainMenuV2 = ({ toggleSubMenu2, closeInfoBar }: DataType) => {
                 <li>
                     <Link to="/services" onClick={closeInfoBar}>Services </Link>
                 </li>
-                <li><Link to="/about-us" onClick={closeInfoBar}>About Us</Link></li>
-                <li><Link to="/team" onClick={closeInfoBar}>Team Style One</Link></li>
-                <li><Link to="/project" onClick={closeInfoBar}>Project Showcase</Link></li>
-                <li><Link to="/contact-us" onClick={closeInfoBar}>Contact Us</Link></li>
+                <li><Link to="/about-us" onClick={closeInfoBar}>About</Link> </li>
+                <li><Link to="/contact-us" onClick={closeInfoBar}>Contact</Link></li>
             </ul>
         </>
     );
