@@ -19,15 +19,15 @@ const FooterV3 = () => {
                                     </div>
                                     <ul className="address-list">
                                         <li>
-                                            <h4>Australia</h4>
+                                            <h4>Nador</h4>
                                             <p>
-                                                Travel World House, Level 7, 17 Jones St, NSW, 2060
+                                                Oriental Region, Morocco
                                             </p>
                                         </li>
                                         <li>
-                                            <h4>Dubai</h4>
+                                            <h4>Oujda</h4>
                                             <p>
-                                                Sheikh Mohammed bin Salah, #234 B - Downtown - Dubai
+                                                Oriental Region, Morocco
                                             </p>
                                         </li>
                                     </ul>
@@ -59,7 +59,7 @@ const FooterV3 = () => {
                                 </div>
                                 <div className="col-lg-6 text-end">
                                     <p>
-                                        Copyright &copy; {(new Date().getFullYear())} Dixor. All Rights Reserved
+                                        Copyright &copy; {(new Date().getFullYear())} MaxTeam Visuals. All Rights Reserved
                                     </p>
                                 </div>
                             </div>

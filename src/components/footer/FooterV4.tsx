@@ -40,10 +40,10 @@ const FooterV4 = ({ sectionClass, lightMode }: DataType) => {
                                 <div className="footer-contact">
                                     <ul>
                                         <li>
-                                            <a href="mailto:someone@example.com">info@dixor.com</a>
+                                            <a href="mailto:kodiji.mohammed@gmail.com">kodiji.mohammed@gmail.com</a>
                                         </li>
                                         <li>
-                                            <a href="tel:+4733378901">+47 333 78 901</a>
+                                            <a href="tel:+212638553480">+212 638-553480</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -76,7 +76,7 @@ const FooterV4 = ({ sectionClass, lightMode }: DataType) => {
                             </div>
                             <div className="col-lg-6 text-end">
                                 <p>
-                                    Copyright &copy; {(new Date().getFullYear())} Dixor. All Rights Reserved
+                                    Copyright &copy; {(new Date().getFullYear())} MaxTeam Visuals. All Rights Reserved
                                 </p>
                             </div>
                         </div>

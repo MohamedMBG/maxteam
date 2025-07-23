@@ -78,19 +78,19 @@ const HeaderV5 = ({ lightMode }: DataType) => {
                                                                 <li>
                                                                     <div className="content">
                                                                         <p>Address</p>
-                                                                        <strong>California, TX 70240</strong>
+                                                                        <strong>Oriental Region, Morocco</strong>
                                                                     </div>
                                                                 </li>
                                                                 <li>
                                                                     <div className="content">
                                                                         <p>Email</p>
-                                                                        <strong>support@validtheme.com</strong>
+                                                                        <strong>kodiji.mohammed@gmail.com</strong>
                                                                     </div>
                                                                 </li>
                                                                 <li>
                                                                     <div className="content">
                                                                         <p>Contact</p>
-                                                                        <strong>+44-20-7328-4499</strong>
+                                                                        <strong>+212 638-553480</strong>
                                                                     </div>
                                                                 </li>
                                                             </ul>

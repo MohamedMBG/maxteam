@@ -41,10 +41,10 @@ const AboutV6 = ({ lightMode, sectionClass }: DataType) => {
                                 <div className="info">
                                     <div className="d-flex">
                                         <Link to="/about-us"><img src={lightMode ? arrowTheme : arrowIcon} alt="Image Not Found" /></Link>
-                                        <h2 className="title text">Best creative & digital agency</h2>
+                                        <h2 className="title text">Professional Photo & Video Production</h2>
                                     </div>
                                     <p className="text">
-                                        Give lady of they such they sure it. Me contained explained my education. Vulgar as hearts by garret. Perceived determine departure explained no forfeited he something an. Contrasted dissimilar get joy you instrument out reasonably
+                                        MaxTeam Visuals is a Moroccan audiovisual production company based in Nador and Oujda. Founded by Mohamed Kodiji, we handle every step from concept development to final delivery for brands, events and artists across the country.
                                     </p>
                                 </div>
                                 <ul className="service-list">

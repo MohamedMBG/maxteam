@@ -2,19 +2,13 @@
     {
         "id": 1,
         "thumb": "14.jpg",
-        "name": "James Baker",
-        "designation": "Co-Founder, Dixor"
+        "name": "Mohammed Kodiji",
+        "designation": "Founder, CEO, MaxTeam Visuals"
     },
     {
         "id": 2,
         "thumb": "15.jpg",
-        "name": "Dalton Grant",
-        "designation": "CEO, Validthemes"
-    },
-    {
-        "id": 3,
-        "thumb": "16.jpg",
-        "name": "Ryan Ricketts",
-        "designation": "UX Designer"
+        "name": "Nour EL Houda",
+        "designation": "Assistante Director, MaxTeam Visuals"
     }
 ]
