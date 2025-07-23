@@ -58,10 +58,7 @@ const BannerV1 = ({ lightMode }: DataType) => {
                             <Animate className='animate__animated animate__fadeInUp' delay="1s" duration="0.6s">
                                 <div className="banner-style-one-info">
                                     <div className="top-info">
-                                        <h4>Based On Australia</h4>
-                                        <p>
-                                            Uburb, State Abbreviation, Postcode
-                                        </p>
+                                        <h4>Based On Morocco, Rabat and Oujda</h4>
                                     </div>
                                     <div className="bottom">
                                         <p>
