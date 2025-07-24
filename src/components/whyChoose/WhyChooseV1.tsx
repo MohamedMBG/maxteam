@@ -13,7 +13,7 @@ const WhyChooseV1 = ({ sectionClass }: DataType) => {
                     <div className="row align-center">
                         <div className="col-lg-5">
                             <div className="thumb-style-one">
-                                <img src={thumb3} alt="Image Not Found" />
+                                <img src="https://maxteamvisual.com/wp-content/uploads/2024/01/d25ff74a-4ef1-4e5c-87eb-8dee3bb1d1ad_rwc_0x0x2000x2000x2000d874.jpg" alt="Image Not Found" />
                             </div>
                         </div>
                         <div className="col-lg-7">

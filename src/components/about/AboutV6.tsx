@@ -33,7 +33,7 @@ const AboutV6 = ({ lightMode, sectionClass }: DataType) => {
                     <div className="row">
                         <div className="col-xl-5 col-lg-5">
                             <div className="thumb-style-four">
-                                <img src={lightMode ? thumb12 : thumb2} alt="Image Not Found" />
+                                <img src="https://maxteamvisual.com/wp-content/uploads/2024/01/Design-sans-titre-16.png" alt="Image Not Found" />
                             </div>
                         </div>
                         <div className="col-xl-6 offset-xl-1 col-lg-7">

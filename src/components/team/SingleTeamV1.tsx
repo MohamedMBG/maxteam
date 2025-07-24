@@ -16,7 +16,13 @@ const SingleTeamV1 = ({ team }: { team: DataType }) => {
             <div className="team-style-one-item">
                 <div className="thumb">
                     <Link to={`/team-details/${id}`}>
-                        <img src={`/assets/img/team/${thumb}`} alt="Image Not Found" width={300} height={315} />
+                    <img
+  src={thumb?.startsWith('http') ? thumb : `/assets/img/team/${thumb}`}
+  alt="Image Not Found"
+  width={300}
+  height={315}
+/>
+
                     </Link>
                     <div className="social-overlay">
                         <ul>

@@ -53,15 +53,9 @@ const TeamV1 = ({ sectionClass, hasTitle }: DataType) => {
                                         </button>
                                     </li>
                                     <li className="nav-item" role="presentation">
-                                        <button className="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">
-                                            <strong>Marketing Manager</strong>
-                                            <span>Sales Department</span>
-                                        </button>
-                                    </li>
-                                    <li className="nav-item" role="presentation">
                                         <button className="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">
-                                            <strong>Software Developer</strong>
-                                            <span>App Department</span>
+                                            <strong>Developer</strong>
+                                            <span>Our freelancer</span>
                                         </button>
                                     </li>
                                 </ul>

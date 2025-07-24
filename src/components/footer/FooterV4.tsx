@@ -25,15 +25,15 @@ const FooterV4 = ({ sectionClass, lightMode }: DataType) => {
                                 </div>
                                 <ul className="address-list">
                                     <li>
-                                        <h4>Australia</h4>
+                                        <h4>Morocco</h4>
                                         <p>
-                                            Travel World House, Level 7, 17 Jones St, NSW, 2060
+                                            Rabat, Morocco
                                         </p>
                                     </li>
                                     <li>
-                                        <h4>Dubai</h4>
+                                        <h4>Morocco</h4>
                                         <p>
-                                            Sheikh Mohammed bin salah, #234 B - Downtown - Dubai
+                                            Oujda Morocco
                                         </p>
                                     </li>
                                 </ul>
